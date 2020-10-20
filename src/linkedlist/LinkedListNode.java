@@ -1,45 +1,89 @@
 package linkedlist;
 
-public class LinkedListNode<T> {
-	private LinkedListNode<T> first;
-
-
-	public LinkedListNode(LinkedListNode<T> first) {
-		super();
-
-	public T value;
-	public LinkedListNode<T> next;
-
-
-	  public LinkedListNode(T value) { 
-		  super();
-		  this.value= value; 
-		  this.next= null; 
-		  }
-
-	public LinkedListNode(T value) {
-		super();
-		this.value = value;
-		this.next = null;
+public class LinkedListClass<T> {
+	public ILinkedList<T> head;
+	public ILinkedList<T> tail;
+	public LinkedListClass(ILinkedList<T> head, ILinkedList<T> tail) {
+		this.head = null;
+		this.tail = null;
 	}
+	public LinkedListClass() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void insert(ILinkedList<T> newNode) {
+		if (this.tail==null) {
+			this.tail=newNode;
+		}
+		
+		if(this.head==null) {
+			this.head=newNode;
+		}else {
+			ILinkedList<T> temp=this.head;
+			this.head=newNode;
+			(this.head).setNext(temp);
+		}
+	}
+	
+	
+		
+	public void append(ILinkedList<T> newNode) {
+		if (this.tail == null) {
+			this.tail = newNode;
+		}
+		if (this.head == null) {
+			this.head = newNode;
+		} else {
+			ILinkedList<T> temp = this.head;
+			this.head = newNode;
+			(this.head).setNext(temp);
+		}
+	}
+	public void printlist() {
+		System.out.print("Linked List=");
+		ILinkedList<T> temp=head;
+		do {
+			System.out.println(temp.getT());
+			if(!temp.equals(tail)) System.out.println(">");
+			temp=temp.getNext();
+		}while(temp.getNext()!= null);
+		System.out.println(temp.getT());
+		}
+	
+ public void push(ILinkedList<T> beforeNode,ILinkedList<T> newNode) {
+	 ILinkedList<T> temp=beforeNode.getNext();
+	 beforeNode.setNext(newNode);
+	 newNode.setNext(temp);
+ }
 
-	public LinkedListNode<T> getNext() {
-		return next;
-	}
-	/*
-	 * public void insert(Integer a) { node.setNext(first); first = a; }
-	 */
+ public void pop() {
+	 ILinkedList<T> temp=head;
+	 head=head.getNext();
 
-	// UC2 Insert at the front of list
-	public void insert(LinkedListNode<T> node) {
-		node.setNext(first);
-		first = node;
-	}
+ }
 
-	public void setNext(LinkedListNode<T> next) {
-		this.next = next;
+public void poptail() {
+	ILinkedList<T> temp=head;
+	while((!(temp.getNext()).equals(tail))) {
+		temp=temp.getNext();
 	}
-	public T getValue() {
-		return value;
-	}
+	tail=temp;
+	tail.setNext(null);
+
 }
+
+public int search(T data) {
+	ILinkedList<T> temp=head;
+	int flag=1;
+	while(temp!=null && temp.getNext()!=null) {
+		if((temp.getT()).equals(data)) {
+			return flag;
+		}
+		flag ++;
+		temp=temp.getNext();
+
+	}
+	return -1;
+}
+}
+
