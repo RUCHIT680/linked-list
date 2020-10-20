@@ -55,13 +55,13 @@ public class LinkedListClass<T> {
 	 beforeNode.setNext(newNode);
 	 newNode.setNext(temp);
  }
-
+ 
  public void pop() {
 	 ILinkedList<T> temp=head;
 	 head=head.getNext();
-
+	 
  }
-
+	
 public void poptail() {
 	ILinkedList<T> temp=head;
 	while((!(temp.getNext()).equals(tail))) {
@@ -73,17 +73,29 @@ public void poptail() {
 }
 
 public int search(T data) {
+public LinkedListNode<T> search(T data) {
 	ILinkedList<T> temp=head;
 	int flag=1;
 	while(temp!=null && temp.getNext()!=null) {
 		if((temp.getT()).equals(data)) {
 			return flag;
+			return (LinkedListNode<T>) temp;
 		}
 		flag ++;
+
 		temp=temp.getNext();
 
 	}
 	return -1;
+	return (LinkedListNode<T>) tail;
 }
+public void insertAfter(T before_data, T data) {
+	LinkedListNode<T> before_Node=search(before_data);
+	LinkedListNode<T> newNode=new LinkedListNode<T>(data);
+
+	push(before_Node,newNode);
+
+
 }
 
+}

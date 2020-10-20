@@ -1,5 +1,6 @@
 package linkedlist;
 
+import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,8 +21,7 @@ public class GenericLinkedListTest {
 	LinkedList.insert(myFirstNode);
 	LinkedList.append(mySecondNode);
 	LinkedList.append(myThirdNode);
-	LinkedList.printlist();
-	LinkedList.pop();
+	LinkedList.insertAfter(30, 40);
 
 	}
 
@@ -29,17 +29,15 @@ public class GenericLinkedListTest {
 	@Test
 	public void When56isPutIn1isReturned() {
 		Assert.assertEquals(1,LinkedList.search(56));
+	public void When40isSearchedItShouldLieBefore70() {
+		Assert.assertEquals(myThirdNode,LinkedList.search(40).getNext());
 		}	
 	@Test
-	public void mySecondNodebecomesHeadwhenmyFirstNodeisPopped() {
-		Assert.assertTrue((LinkedList.head).equals(mySecondNode));}
 	public void When30isPutIn2isReturned() {
 		Assert.assertEquals(2,LinkedList.search(30));
 		}
 	@Test
-	public void myThirdNodebecomesmySecondNodewhenmyFirstNodeisPopped() {
-		Assert.assertTrue(((LinkedList.head).getNext()).equals(myThirdNode));}		}	
 	public void When70isPutIn3isReturned() {
 		Assert.assertEquals(3,LinkedList.search(70));
 		}}	
-
+	}	
