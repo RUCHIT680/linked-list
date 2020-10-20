@@ -1,6 +1,5 @@
 package linkedlist;
 
-import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,31 +16,30 @@ public class GenericLinkedListTest {
 	mySecondNode = new LinkedListNode<Integer>(30);
 	myThirdNode = new LinkedListNode<Integer>(70);
 	LinkedList= new LinkedListClass<Integer>();
-
+	
 	LinkedList.insert(myFirstNode);
 	LinkedList.append(mySecondNode);
 	LinkedList.append(myThirdNode);
-	LinkedList.push(myFirstNode,mySecondNode);
 	LinkedList.printlist();
 	LinkedList.pop();
+
 	}
 
+
 	@Test
-	public void ReturnTrueWhenMyFirstNodeAppend() {
-		Assert.assertTrue((LinkedList.head).equals(myFirstNode));}
+	public void When56isPutIn1isReturned() {
+		Assert.assertEquals(1,LinkedList.search(56));
+		}	
+	@Test
 	public void mySecondNodebecomesHeadwhenmyFirstNodeisPopped() {
 		Assert.assertTrue((LinkedList.head).equals(mySecondNode));}
+	public void When30isPutIn2isReturned() {
+		Assert.assertEquals(2,LinkedList.search(30));
+		}
 	@Test
-	public void ReturnTrueWhenMySecondNodeAppend() {
-		Assert.assertTrue(((LinkedList.head).getNext()).equals(mySecondNode));}
-	@Test
-		public void ReturnTrueWhenMyThirdNodeAppend() {
-		Assert.assertTrue((LinkedList.tail).equals(myThirdNode));
-		}	
 	public void myThirdNodebecomesmySecondNodewhenmyFirstNodeisPopped() {
 		Assert.assertTrue(((LinkedList.head).getNext()).equals(myThirdNode));}		}	
-
-
-
-
+	public void When70isPutIn3isReturned() {
+		Assert.assertEquals(3,LinkedList.search(70));
+		}}	
 
